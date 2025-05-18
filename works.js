@@ -1,29 +1,4 @@
-// Initialize GSAP ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Make Works Fade In Using GSAP ScrollTrigger
-    const containers = document.querySelectorAll('.container');
-    
-    gsap.utils.toArray(containers).forEach((container, i) => {
-        gsap.set(container, { opacity: 0, y: 20 });
-        
-        ScrollTrigger.create({
-            trigger: container,
-            start: "top 80%",
-            onEnter: () => {
-                gsap.to(container, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    delay: i * 0.1,
-                    ease: "power2.out"
-                });
-            }
-        });
-    });
-
-    // Show image when hovering over text
+// Show image when hovering over text
     gsap.set('.container img.swipeimage', { yPercent: -50, xPercent: -50 });
 
     let activeImage;
@@ -52,5 +27,4 @@ document.addEventListener('DOMContentLoaded', function() {
     
     el.addEventListener('mouseleave', () => fade.reverse());
     
-    });
 });

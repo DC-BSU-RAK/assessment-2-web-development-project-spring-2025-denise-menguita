@@ -1,0 +1,166 @@
+<!--
+Denise Marielle Menguita
+Creative Computing Year 1 Group 3
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttered Shrimp Recipe</title>  <!-- shown on the tab -->
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="icons8-prawn-32.png">
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Iansui&family=Nova+Square&display=swap" rel="stylesheet">
+
+<style>
+  html {
+    cursor: url('cursor.cur'), auto; /* custom cursor for cuteness */
+    scrollbar-width: thin; /* make scrollbar thin */
+  }
+
+  body { /* everything that's in the body */
+    font-family: "Iansui", cursive;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0px 15px;  /* add space to sides */
+    background: #7a593c;
+    color: white; /* font color */
+  }
+
+  ::selection { /* change the text highlight color */
+    background: #75291c;
+  }
+
+  h1, h2 {  /* change the font of headings */
+    font-family: "Nova Square", sans-serif;
+    font-style: bold;
+  }
+
+  h1 {
+    font-size: 3.3vw; /* font size according to viewport (browser window size) width */
+    font-weight: 800; /* make the font thick */
+    text-align: center;
+    background: -webkit-linear-gradient(#eab764, #d9703b);  /* makes the background of the text/pseudo-text color a gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* makes the actual text color transparent, so the gradient shows */
+    filter: drop-shadow(2px 3px 0px #75291c);
+  }
+
+  .deets {  /* the details under the title */
+    text-align: center;
+  }
+
+  h2 {
+    font-weight: 400;
+  }
+
+  p, li {  /* any paragraph */
+    line-height: 1.5;
+    text-align: justify;
+  }
+
+  h2, b {  /* color of h2 and any text in bold */
+    color:#f77b33;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .column { /* both columns */
+    float: left;
+    padding: 10px;
+  }
+
+  .left { /* left column */
+    width: 69%;
+    padding-left: 5px;
+    margin-right: 1%;
+  }
+
+  .right { /* right column */
+    width: 30%;
+  }
+
+  img { /* image of the dish */
+    max-width:28vw;
+    outline: 4px dashed;
+    outline-offset: -20px;
+    border: 4px solid #8d422d;
+    border-radius: 15px; /* round the corners of the image */
+    filter: drop-shadow(2px 4px 5px #451c16); /* adds drop shadow to image */
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @media screen and (max-width: 600px) {  /* make columns responsive and resize according to screen size */
+    .column {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <h1>Garlic Butter Shrimp Recipe</h1>  <!-- title -->
+      <div class="deets"><b>Prep:</b> 10 minutes | <b>Cook:</b> 15 minutes | <b>Total:</b> 25 minutes | <b>Servings:</b> 2</div>
+
+  <div class="row"> <!-- make row w 2 columns to div the text and img -->
+    <div class="column left">
+      <p>  <!-- recipe description -->
+          I love seafood, from crab to mussel to shrimp, specifically butter shrimp.
+          This dish has a special place in my heart because when I was in the Philippines,
+          my friend's mom would make it for me. As a teenager away from her OFW parents,
+          it was incredibly heartwarming to have someone step up and make me one of my favorite dishes.
+          Now, my mom's the one who makes it for me. At one point, we had it for a whole week!
+      </p>
+
+      <h2>Ingredients</h2>  <!-- heading -->
+          <ul> <!-- this adds an unordered list -->
+              <li>0.45 kg/1 lb cleaned shrimp</li> <!-- this is the list -->
+              <li>1/4 cup butter</li>
+              <li>20 cloves garlic, minced</li>
+              <li>1/2 tsp crushed red pepper flakes</li>
+              <li>1 teaspoon lemon juice</li>
+              <li>Salt and pepper</li>
+              <li>2 tbsp parsley, minced</li>
+          </ul>
+
+      <h2>Instructions</h2>  <!-- heading -->
+          <ol> <!-- this adds an ordered list -->
+              <li>Season the shrimp with salt and set aside while you do the other prep. <!-- this is the list -->
+              </li>
+              <li>In a large stainless steel pan over medium heat, add the butter.
+                  Once the butter has melted and is bubbling, add the shrimp and lay flat,
+                  make sure each shrimp are touching the pan.
+                  Let it cook on the first side until the shrimp are half way cooked up the side, around 2-4 minutes.
+              </li>
+              <li>Add the garlic and red pepper flakes and begin stirring the shrimp and coating it with the garlic and red pepper flakes.
+                  Once the shrimp are pink throughout, add the lemon juice and stir to combine.
+              </li>
+              <li>Serve with the butter lemon sauce from the pan, garnish with parsley and enjoy!
+              </li>
+          </ol>
+    </div>
+    <div class="column right">
+      <img src="shrimp.jpg"> <!-- image of the dish -->
+    </div>
+  </div>
+</body>
+</html>
+
+<!--
+Denise Marielle Menguita
+Creative Computing Year 1 Group 3
+-->

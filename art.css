@@ -1,0 +1,123 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Pinyon+Script&family=Red+Rose:wght@300..700&family=Song+Myung&display=swap');
+
+body{
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #3D7086;
+    background: linear-gradient(180deg, rgba(61, 112, 134, 1) 0%, rgba(34, 63, 101, 1) 38%);
+}
+
+:root{
+    --width-circle: 150vw;
+    --radius: calc(100vw / 6);
+}
+.slider{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; 
+    position: relative;
+}
+.slider .list{
+    position: absolute;
+    width: max-content;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    transition: transform 0.8s;
+    
+}
+.slider .list .item{
+    width: calc(var(--radius) * 2);
+    text-align: center;
+    transform: rotate(45deg);
+    transition: transform 1s;
+}
+.slider .list .item.active{
+    transform: rotate(0deg);
+}
+.slider .list .item img{
+    width: 75%;
+    filter: drop-shadow(0 0 20px #000);
+}
+.slider .list .item:not(.active) img {
+    filter: blur(5px) drop-shadow(0 0 20px #000);
+    opacity: 0.8; /* fade inactive images */
+}
+
+.slider .list .item.active img {
+    filter: drop-shadow(0 0 20px #000); /* keep shadow but no blur */
+}
+
+.slider .content{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #ffeed8;
+    width: max-content;
+}
+.slider .content div:nth-child(1){
+    font-size: 5rem;
+    letter-spacing: 10px;
+    position: relative;
+    font-family: "Pinyon Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+.slider .content div:nth-child(1)::before{
+    position: absolute;
+    left: 60%;
+    bottom: 50%;
+    width: 80px;
+    height: 80px;
+    content: '';
+    background-image: url(img/leaves.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.slider .content button{
+    border: 1px solid #eee5;
+    background: transparent;
+    font-family: "Song Myung", serif;
+    letter-spacing: 3px;
+    border-radius: 20px;
+    padding: 10px 20px;
+
+    a {
+        color: #ffeed8;
+        text-decoration: none;
+    }
+
+    a:visited {
+     text-decoration: none;
+    }
+}
+#prev, #next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    margin: 0% 20%;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #eee9;
+    background-color: #eee5;
+    color: #ffeed8;
+    font-size: x-large;
+    font-family: monospace;
+    cursor: pointer;
+    z-index: 15;
+}
+#prev{
+    left: 60px;
+}
+#next{
+    right: 60px;
+}

@@ -1,0 +1,103 @@
+/* 
+Denise Marielle Menguita
+Creative Computing Year 1 Group 3
+Chapter 6: JavaScript - Petrol Calculator
+*/
+
+body { /* customize the whole body */
+    display: flex;
+    /* align everything to the center */
+    justify-content: center;
+    align-items: center;
+    height: 75vh; /* horizontal alignment */
+    background-color: #e0f7fa;
+    font-family: Helvetica, sans-serif;
+}
+
+.container {
+    background-color: #4aa19e;
+    color: black;
+    padding: 30px; /* space between the edge of the div and the content */
+    border-radius: 15px; /* make the corners rounded */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* add drop shadow */
+    margin-top: 20px;
+
+    h1 {
+        display: flex;
+        justify-content: center;
+        align-items: centre;
+        color: white;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+label {
+    font-size: 1.2rem;
+    color: white;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #00796b;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #004d40;
+    outline: none;
+}
+
+#btn{
+    margin-top: 5%;
+    transition: background-color 0.3s;
+    text-align: center;  /* center buttons */
+
+    button{
+        margin-right: 15px; /* put space between buttons */
+        padding: 5px 13px; /* make space between text and border of button */
+        background-color: white;
+        color: #a32727;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer; /* make cursor change when hovering over */
+    }
+}
+
+/* make button change when hovered */
+button:hover{ 
+    padding: 5px 10px;
+    background-color: #a32727;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.amount {
+    margin-top: 20px;
+    text-align: center;
+    border-top: 1px solid #00796b;
+    padding-top: 10px;
+
+    h2 {
+        color: white;
+    }
+}

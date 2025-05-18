@@ -1,0 +1,616 @@
+/* 
+Denise Marielle Menguita
+Assessment 2: Web Development Project
+Theme 2 – Portfolio
+*/
+
+* { /* all elements have the styling below unless specified otherwise */
+   margin: 0;
+   padding: 0;
+}
+
+html {
+    cursor: none;
+}
+
+#circularcursor {
+    background-color: transparent;
+    border:1px solid black;    
+    height:30px;
+    width:30px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    position: absolute;
+    z-index: 1;
+} 
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: "Noto Sans JP", sans-serif; /* set font of all text unless specified otherwise */
+    font-size: 1.1vw; /* set font size of all text unless specified otherwise */
+}
+
+/* Pages */
+nav {
+    display: block;
+    position: fixed !important; /* position nav to viewport, so it always stays in same place even if the page is scrolled */
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+    /* make text change colors depending on bg */
+    mix-blend-mode: difference;
+    color: #ffeed8;
+
+    h3, a {
+        padding: 40px;
+    }
+
+    a {
+    text-transform: uppercase;
+    color: #ffeed8;
+    position: relative;
+    display: inline-block;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-items {
+    display: flex;
+}
+
+.nav-items a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 30px; /* match padding */
+    left: 50%;
+    background-color: #ffeed8; /* match nav text color */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-items a:hover::after {
+    width: calc(100% - 80px); /* calc for padding */
+    left: 40px; /* match horizontal padding */
+}
+
+#hero {
+    height: 70vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 10% 10%; /* top & bottom, left & right */
+    /* gradient bg */
+    background: #FFEED8;
+    background: linear-gradient(180deg, rgba(255, 238, 216, 1) 54%, rgba(61, 112, 134, 1) 95%);
+    color: #223F65;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 4em;
+}
+.head-1, h2 {
+    align-self: center;
+}
+
+h2 {
+    margin-top: .6em;
+}
+
+#role {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    text-shadow: 0 2px 10px rgba(34, 63, 101, 0.3);
+    width: 100%;
+    overflow: hidden; /* prevent horizontal scroll during animation */
+}
+
+#designer-developer {
+    display: inline-block;
+    will-change: transform, opacity;
+    opacity: 0; /* start hidden */
+}
+
+#works {
+    width: 100%;
+    padding-top: 1.8em; /* top, right, bottom, left */
+    background: #3D7086;
+    background: linear-gradient(180deg, rgba(61, 112, 134, 1) 0%, rgba(34, 63, 101, 1) 38%);
+    text-align: center;
+    color: #ffeed8;
+}
+
+#works.embed {
+    align-items: center;
+    justify-content: center;
+}
+
+.block {
+    height: 200px;
+    width: 300px;
+    margin: 50px;
+    align-items: center;
+    text-align: center;
+    border: 0.5mm solid black;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+/* make items fade in as user scrolls down */
+@keyframes appear {
+    from {
+      opacity: 0;
+      clip-path: inset(100% 100% 0 0);
+    }
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+.block {
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+/* show image when hovering over text */
+/* .container {
+    display:inline-block;
+    width: 100vw;
+    padding: 40px 10%;
+    text-align: left;
+}
+
+.container img.swipeimage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  z-index: 9;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.text {
+    text-transform: uppercase;
+}
+hr {
+    border: 2px solid #ffeed8;
+} */
+
+/*
+3D Rotation Effect
+Author: Lun Dev
+*/
+/* .banner{
+    margin-top: -50px;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+} */
+.product{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 170px;
+    z-index: 2;
+    width: 500px;
+    transition: 0.7s;
+}
+.product .fish{
+    position: absolute;
+    bottom: 0;
+    left: calc(50%);
+    transform: translateX(-50%);
+}
+.fish{
+    --left: 0px;
+    background: 
+        var(--url) var(--left),
+        url(images/fish.png) 0 0;
+    background-size: auto 100%;
+    width: 280px;
+    aspect-ratio: 2 / 4;
+    background-blend-mode: multiply;
+    transition: 0.8s;
+    mask-image: url(images/fish.png);
+    mask-size: auto 100%;
+}
+.fish:nth-child(2){
+    opacity: 0;
+}
+.product:hover{
+    bottom: 300px;
+}
+.product:hover .fish:nth-child(2){
+    opacity: 1;
+    --left: 500px;
+}
+.product:hover .fish:nth-child(1){
+    opacity: 0;
+    --left: 500px;
+}
+
+.coral{
+    position: absolute;
+    inset: 0 0 0 0;
+    width: 100%;
+    pointer-events: none;
+}
+.coral img:nth-child(1){
+    position: absolute;
+    height: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    transition: 0.7s;
+    z-index: 1;
+}
+.coral img:nth-child(2){
+    position: absolute;
+    height: 45%;
+    left: 0;
+    bottom: 0;
+    transition: 0.7s;
+}
+.coral img:nth-child(3){
+    position: absolute;
+    height: 85%;
+    right: 0;
+    bottom: -100px;
+    rotate: -25deg;
+    transition: 0.7s;
+}
+.banner:has(.product:hover) .coral img:nth-child(1){
+    transform: translateX(-50%) translateY(50px);
+}
+.banner:has(.product:hover) .coral img:nth-child(2){
+    transform: translateX(-100px) translateY(100px);
+}
+.banner:has(.product:hover) .coral img:nth-child(3){
+    transform: translateX(100px) translateY(100px);
+}
+@media screen and (max-width: 1023px) {
+    
+    .fish{
+        width: 400px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .fish{
+        width: 250px;
+    }
+    header img{
+        display: none;
+    }
+    header .author{
+        width: 100%;
+    }
+}
+
+#about {
+    height: 92vh;
+    background: #223F65;
+    font-family: "Mansalva", sans-serif;
+    color: #ffeed8;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    gap: 30px;
+    padding: 2%;
+
+    /* make button transparent so img doesn't have a bg */
+    button {
+        border: none;
+        appearance: none;
+        background-color: inherit;
+        z-index: 2;
+    }  
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item-1, .item-3 { /* width of pearl divs */
+    width: 29%;
+    padding-top: 10%;
+}
+
+p {
+    position: absolute;
+    z-index: 3;
+    margin-top: 5em;  /* text will stay in same position even if screen is resized */
+}
+
+#p1 {
+    margin-left: 10.5em;
+}
+#p2 { /* education */
+    margin-left: 6.5em;
+    margin-top: 14em;
+}
+#p3 {
+    margin-left: 4.5em;
+}
+#p4 { /* tools */
+    margin-left: 2.3em;
+    margin-top: 12em;
+}
+
+.pearl {
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 10px #ffeed8;
+    animation: glow-border 2s infinite alternate; /* make individual pearl button glow */
+}
+
+@keyframes glow-border { /* make glow pulse */
+    0%, 100% {
+        box-shadow: 0 0 10px #ffeed8;
+    }
+
+    50% {
+        box-shadow: 0 0 15px white;
+    }
+}
+
+/* pearl positioning */
+.pearl-1 {
+    margin-top: 4em;
+    margin-left: 6em;
+}
+
+.pearl-2 {
+    margin-top: 16em;
+    margin-left: 15em;
+}
+
+.pearl-3 {
+    margin-top: 4em;
+    margin-left: 10em;
+}
+
+.pearl-4 {
+    margin-top: 13em;
+    margin-left: 7em;
+}
+
+.item-2 { /* clam div */
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+
+#clam { /* clam itself */
+    height: 85%;
+    z-index: 1;
+
+    /* <color> <length> <length> <blur> */
+    filter: drop-shadow(#f8b79f -0.1rem -0.1rem 10px) /* top left */
+        drop-shadow(#f8b79f -0.1rem 0.1rem 10px) /* bottom left */
+        drop-shadow(#f8b79f 0.1rem -0.1rem 10px)  /* top right */
+        drop-shadow(#f8b79f 0.1rem 0.1rem 10px);  /* bottom right */
+}
+
+.blob { /* changing this to .pearl makes the glowing animation stop */
+    position: relative; /* IMPORTANT THIS MAKES IT WORK DENISE YOU SPENT AN HOUR TRYING TO FIGURE THIS OUT AFTER YOU FIXED THE ALIGNMENT */ 
+    display: inline-block;
+    animation: MoveUpDown 2s linear infinite; /* make them bob */ 
+}
+
+@keyframes MoveUpDown {
+    0%, 100% {
+        bottom: 100px;
+    }
+
+    50% {
+        bottom: 120px;
+    }
+} 
+
+/* POPUPS */
+.popup {
+    position: absolute;
+    width: 140px;
+    border: none;
+    background: #ffeed8;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    z-index: 10;
+    margin: 0;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.pearl-hover-trigger:hover + .popup,
+.popup:hover {
+    display: block;
+    opacity: 1; /* show popup when hovering over its pearl*/
+}
+
+#popup-me, #popup-skills, #popup-edu, #popup-tools {
+    background: #ffeed8;
+    border: 2px solid #f8b79f;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: #223f65;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#popup-me {
+    width: 200px; /* whole pic is seen */
+
+    img {
+    height: 250px;
+    border-radius: 5px;
+}
+}
+
+#popup-edu {
+    width: 100%;
+}
+
+/* position each popup next to its pearl */
+#popup-me {
+    top: -10px;
+    left: 100px;
+}
+
+#popup-edu {
+    top: 140px;
+    left: 240px;
+}
+
+#popup-skills {
+    top: 10px;
+    right: 100px;
+}
+
+#popup-tools {
+    top: 120px;
+    right: 100px;
+}
+
+/* Responsive Positioning */
+@media (max-width: 768px) {
+    #popup-me, #popup-skills {
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    #popup-edu, #popup-tools {
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* animate the cards so they wiggle when they popup */
+#popup-me, #popup-skills, #popup-edu, #popup-tools {
+    animation: shake 2s;
+}
+
+@keyframes shake {
+    10% { transform: rotate(5deg); }
+    20% { transform: rotate(-5deg); }
+    30% { transform: rotate(5deg); }
+    40% { transform: none; }
+}
+
+#contact {
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-self: center;
+    /* row-gap: 2em; */
+    background: #223F65;
+    background: linear-gradient(180deg, rgba(34, 63, 101, 1) 0%, rgba(61, 112, 134, 1) 40%, rgba(255, 238, 216, 1) 94%);
+    color: #ffeed8;
+    text-align: center;
+    font-family: "Mansalva", sans-serif;
+}
+
+.links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2em;
+
+    img {
+        height: 40px;
+        color: #223f65;
+    }
+}
+
+.links-button {
+    width: 80px;
+    height: 80px;
+    background-color: #ffeed8;
+    border-radius: 50px;
+}
+
+/* Button Hover Effects */
+.links button, .links-button {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.links button:hover, .links-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+svg {
+    fill: #223f65;
+}
+#email {
+    font-size: 2.3vw;
+}
+
+/* email underline */
+#email a {
+    position: relative;
+    display: inline-block;
+    color: #ffeed8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: none;
+}
+
+#email a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    background-color: #223f65;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+#email a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Back to Top */
+html {
+    scroll-behavior: smooth; /* make back to top work */
+}
+.back-to-top {
+    padding-top: 2%;
+    z-index: 1;
+    color: #223f65;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 700;
+}

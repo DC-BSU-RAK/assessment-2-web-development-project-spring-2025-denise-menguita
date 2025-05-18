@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wed Design & Development</title>
+
+    <!-- CSS - Text -->
+    <link rel="stylesheet" href="text.css">
+
+<style>
+    * { /* all elements have the styling below unless specified otherwise */
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #223F65;
+        font-family: "Noto Sans JP", sans-serif;
+    }
+
+    /* NAVIGATION */
+    nav {
+        display: block;
+        position: fixed !important; /* position nav to viewport, so it always stays in same place even if the page is scrolled */
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        z-index: 2;
+        color: #ffeed8;
+
+        h3, a {
+            padding: 40px;
+        }
+
+        a {
+        text-transform: uppercase;
+        color: #ffeed8;
+        position: relative;
+        display: inline-block;
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .nav-items {
+        display: flex;
+    }
+
+    .nav-items a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 30px; /* match padding */
+        left: 50%;
+        background-color: #ffeed8; /* match nav text color */
+        transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    .nav-items a:hover::after {
+        width: calc(100% - 80px); /* calc for padding */
+        left: 40px; /* match horizontal padding */
+    }
+
+    .slider{
+        width: 80%;
+        max-width: 100vw;
+        height: 700px;
+        margin: auto;
+        margin-top: 4.2rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+    .slider .list{
+        position: absolute;
+        width: max-content;
+        height: 100%;
+        left: 0;
+        top: 0;
+        display: flex;
+        transition: 1s;
+    }
+    .slider .list img{
+        width: 1300px;
+        max-width: 100vw;
+        height: 100%;
+        object-fit: cover;
+    }
+    .slider .buttons{
+        position: absolute;
+        top: 45%;
+        left: 5%;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .slider .buttons button{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #fff5;
+        color: #ffeed8;
+        border: none;
+        font-family: monospace;
+        font-weight: bold;
+    }
+    .slider .dots{
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        color: #ffeed8;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .slider .dots li{
+        list-style: none;
+        width: 10px;
+        height: 10px;
+        background-color: #ffeed8;
+        margin: 10px;
+        border-radius: 20px;
+        transition: 0.5s;
+    }
+    .slider .dots li.active{
+        width: 30px;
+    }
+    @media screen and (max-width: 768px){
+        .slider{
+            height: 400px;
+        }
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <h3>DM</h3>
+        <div class="nav-items">
+            <a href="index.html">Home</a> 
+            <a href="art.html">Art</a>
+            <a href="about.html">About</a> 
+        </div>
+    </nav>
+
+    <div class="slider">
+        <div class="list">
+            <div class="item">
+                <a href="https://www.figma.com/proto/Pvl0nnCiRg0NUFasi2ntg5/Final-Project?page-id=0%3A1&node-id=4-3&p=f&viewport=275%2C163%2C0.08&t=TJC4p3ZvHotMk4Al-1&scaling=contain&content-scaling=fixed&starting-point-node-id=4%3A2"
+                target="_blank">
+                 <img src="images/BSU Site.png" alt="homepage of BSU RAK website">
+                </a>
+            </div>
+            <div class="item">
+                <a href="Recipe page\index.html" target="_blank"><img src="images/Recipe Page.png" alt="webpage of a garlic butter shrimp recipe"></a>
+            </div>
+            <div class="item">
+                <a href="Petrol Calculator\index.html" target="_blank"><img src="images/Petrol Calc.png" alt="petrol calculator"></a>
+            </div>
+            <div class="item">
+                <img src="images/Roblox Video.png" alt="Roblox video">
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script src="webdev.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wed Design & Development</title>
+
+    <!-- CSS - Text -->
+    <link rel="stylesheet" href="text.css">
+
+<style>
+body {
+    background-color: transparent;
+}
+.container {
+  display:inline-block;
+  width: 90vw;
+  height: 100%;
+  padding: 40px 0px 40px 5%; /* top, right, bottom, left */
+}
+
+.container img.swipeimage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: 9;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.landscape {
+  width: 400px;
+  height: 200px;
+}
+.portrait {
+  width: 200px;
+  height: 300px;
+}
+
+.text, a {
+    font-family: "Song Myung", serif;
+    font-weight: 400;
+    font-size: 3.4vw;
+    text-transform: uppercase;
+    color: #ffeed8;
+}
+hr {
+    border: 2px solid #ffeed8;
+    width: 90%;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <img class="swipeimage landscape" src="images/BSU Site.png" alt="homepage of BSU RAK website">
+        
+        <div class="text">
+            <a href="https://www.figma.com/proto/Pvl0nnCiRg0NUFasi2ntg5/Final-Project?page-id=0%3A1&node-id=4-3&p=f&viewport=275%2C163%2C0.08&t=TJC4p3ZvHotMk4Al-1&scaling=contain&content-scaling=fixed&starting-point-node-id=4%3A2"
+                target="_blank">bath spa rak site redesign</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <img class="swipeimage landscape" src="images/Recipe Page.png" alt="webpage of a garlic butter shrimp recipe">
+        
+        <div class="text">
+            <a href="Recipe page\index.html" target="_blank">recipe page</a>
+        </div>
+    
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <img class="swipeimage landscape" src="images/Petrol Calc.png" alt="petrol calculator">
+        
+        <div class="text">
+            <a href="Petrol Calculator\index.html" target="_blank">petrol calculator</a>
+        </div>
+    
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <img class="swipeimage portrait" src="images/1.png">
+        
+        <div class="text">
+            <a href="art.html">graphic design</a>
+        </div>
+    
+    </div>
+    <hr>
+
+    <div class="container">
+        <img class="swipeimage portrait" src="images/4.png">
+        
+        <div class="text">
+            <a href="art.html">digital art</a>
+        </div>
+    
+    </div>
+    <hr>
+
+    <!-- gsap.set for image to appear & follow cursor when hovering over text -->
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+<script>
+    // Show image when hovering over text
+    gsap.set('.container img.swipeimage', { yPercent: -50, xPercent: -50 });
+
+    let activeImage;
+    gsap.utils.toArray(".container").forEach((el) => {
+    let image = el.querySelector('img.swipeimage'),
+        setX, setY,
+        align = e => {
+            setX(e.clientX);
+            setY(e.clientY);
+        },
+        startFollow = () => document.addEventListener("mousemove", align),
+        stopFollow = () => document.removeEventListener("mousemove", align),
+        fade = gsap.to(image, {autoAlpha: 1, ease: "none", paused: true, onReverseComplete: stopFollow});
+    
+    el.addEventListener('mouseenter', (e) => {
+        fade.play();
+        startFollow();
+        if (activeImage) { // if there's an actively-animating one, we should match its position here
+        gsap.set(image, {x: gsap.getProperty(activeImage, "x"), y: gsap.getProperty(activeImage, "y")});
+        }
+        activeImage = image;
+        setX = gsap.quickTo(image, "x", {duration: 0.6, ease: "power3"}),
+        setY = gsap.quickTo(image, "y", {duration: 0.6, ease: "power3"})
+        align(e);
+    });
+    
+    el.addEventListener('mouseleave', () => fade.reverse());
+    
+    });
+</script>
+</body>
+</html>
